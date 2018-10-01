@@ -5,6 +5,8 @@ import {
   Link
 } from 'react-router-dom'
 
+import Notifications from './Notifications'
+
 const Home = () => (
   <div>
     <h2>Home</h2>
@@ -24,12 +26,6 @@ const About = () => (
 const Account = () => (
   <div>
     <h2>Account information</h2>
-  </div>
-)
-
-const Notifications = () => (
-  <div>
-    <h2>Notifications </h2>
   </div>
 )
 
