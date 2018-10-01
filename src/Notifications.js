@@ -1,4 +1,5 @@
 import React from 'react';
+import { endpoint } from './api';
 
 export default class Notifications extends React.Component {
     constructor(props) {
@@ -11,7 +12,9 @@ export default class Notifications extends React.Component {
     }
   
     componentDidMount() {
-      fetch("https://gitmailz-api.herokuapp.com/user-notifications.json")
+      fetch(`${endpoint}/user-notifications.json`, {
+        credentials: 'include'
+        })
         .then(res => res.json())
         .then(
           (result) => {
