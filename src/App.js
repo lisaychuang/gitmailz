@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
+import Router from './Router';
 import './App.css';
 
 class App extends Component {
@@ -44,11 +45,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Gitmailz</h1>
         </header>
-        <p className="App-intro">
-
-          <button onClick={this.handleOnClick}>Login</button>
-          <a href="https://gitmailz-api.herokuapp.com/signin">Login here</a>
-        </p>
+        <Router />
       </div>
     );
   }
