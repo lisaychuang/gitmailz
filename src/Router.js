@@ -26,6 +26,7 @@ const About = () => (
 const Account = () => (
   <div>
     <h2>Account information</h2>
+    <p>You have signed in successfully</p>
   </div>
 )
 
