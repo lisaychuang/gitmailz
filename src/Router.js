@@ -4,7 +4,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-
+import { endpoint } from './api';
 import Notifications from './Notifications'
 
 const Home = () => (
@@ -12,7 +12,7 @@ const Home = () => (
     <h2>Home</h2>
 
     <p className="login">
-        <a href="https://gitmailz-api.herokuapp.com/signin">Login</a>
+        <a href={`${endpoint}/signin`}>Login</a>
     </p>
   </div>
 )
