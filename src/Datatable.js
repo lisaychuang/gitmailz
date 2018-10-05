@@ -3,13 +3,15 @@ import { render } from "react-dom";
 import Datasort from "react-data-sort";
 import {notification} from "./Seed";
 
+// Initiate moment.js
+const moment = require('moment');
+
 export default function MyTable() {
-    console.log(notification);
   return (
     <Datasort
       data={notification}
       defaultSortBy="id"
-      paginate
+    //   paginate
       render={({
         data,
         setSortBy,
@@ -23,7 +25,7 @@ export default function MyTable() {
         pages
       }) => {
         return (
-          <div style={{maxWidth: "80%"}}>
+          <div style={{maxWidth: "100%"}}>
             <table border={1} cellPadding={2} style={{width: '100%'}}>
               <TableHead
                 setSortBy={setSortBy}
@@ -33,6 +35,8 @@ export default function MyTable() {
               />
               <TableBody data={data} />
             </table>
+
+            {/* Pagination footer begins  */}
             <Flex style={{justifyContent: 'space-between'}}>
               <GoToPage goToPage={goToPage} pages={pages} />
               <PageIndicator pages={pages} activePage={activePage} />
@@ -54,6 +58,7 @@ export default function MyTable() {
 
 function TableHead({ setSortBy, sortBy, direction, toggleDirection }) {
   const columns = [
+    { key: "score", title: "Score" },
     { key: "id", title: "ID" },
     { key: "repository.name", title: "Repo name" },
     { key: "reason", title: "Reason" },
@@ -98,13 +103,14 @@ function HeadToggle({ children, active, onClick }) {
 function TableBody({ data }) {
   return (
     <tbody>
-      {data.map(({ id, reason, subject, updated_at, repository }) => (
+      {data.map(({score, id, reason, subject, updated_at, repository }) => (
         <tr>
+          <td>{score}</td>
           <td>{id}</td>
           <td><a href={repository.html_url}>{repository.full_name}</a></td>
           <td>{reason}</td>
           <td>{subject.title}</td>
-          <td>{updated_at.slice(0,10)}</td>
+          <td>{moment(updated_at).fromNow()}</td>
         </tr>
       ))}
     </tbody>
