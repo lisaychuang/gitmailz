@@ -6,10 +6,10 @@ import {notification} from "./Seed";
 // Initiate moment.js
 const moment = require('moment');
 
-export default function MyTable() {
+export default function MyTable(props) {
   return (
     <Datasort
-      data={notification}
+      data={props.notifications}
       defaultSortBy="id"
     //   paginate
       render={({
@@ -101,20 +101,23 @@ function HeadToggle({ children, active, onClick }) {
 }
 
 function TableBody({ data }) {
-  return (
-    <tbody>
-      {data.map(({score, id, reason, subject, updated_at, repository }) => (
-        <tr>
-          <td>{score}</td>
-          <td>{id}</td>
-          <td><a href={repository.html_url}>{repository.full_name}</a></td>
-          <td>{reason}</td>
-          <td>{subject.title}</td>
-          <td>{moment(updated_at).fromNow()}</td>
-        </tr>
-      ))}
-    </tbody>
-  );
+    return (
+        <tbody>
+            {data.map(({ score, id, reason, subject, updated_at, repository, notification_url }) => (
+                <tr>
+                    <td>{score}</td>
+                    <td>{id}</td>
+                    {/* Link to repo*/}
+                    <td><a href={repository.html_url} target="_ ">{repository.full_name}</a></td>
+                    <td>{reason}</td>
+
+                    {/* Link to notification */}
+                    <td><a href={notification_url} target="_ "> {subject.title}</a></td>
+                    <td>{moment(updated_at).fromNow()}</td>
+                </tr>
+            ))}
+        </tbody>
+    );
 }
 
 function Flex({ children, style }) {
