@@ -1,6 +1,6 @@
 import React from "react";
 import { endpoint } from "./api";
-import { notification } from "./Seed";
+// import { notification } from "./Seed";
 import DataTable from './Datatable'
 
 export default class Notifications extends React.Component {
@@ -9,7 +9,7 @@ export default class Notifications extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      notifications: notification
+      notifications: []
     };
   }
 
@@ -50,7 +50,7 @@ export default class Notifications extends React.Component {
         <div>
           <h2>My Notifications </h2>
 
-          <DataTable/>
+          <DataTable notifications={notifications}/>
         </div>
       );
     }
