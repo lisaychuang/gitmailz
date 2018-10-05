@@ -13,39 +13,39 @@ export default class Notifications extends React.Component {
     };
   }
 
-//   componentDidMount() {
-//     fetch(`${endpoint}/user-notifications.json`, {
-//       credentials: "include",
-//       mode: "cors"
-//     })
-//       .then(res => {
-//         if (!res.ok) throw new Error('Problem fetching notification data');
-//         return res.json();
-//       })
-//       .then(
-//         result => {
-//           this.setState({
-//             isLoaded: true,
-//             notifications: result
-//           });
-//         },
-//         // Error handling
-//         error => {
-//           this.setState({
-//             isLoaded: true,
-//             error
-//           });
-//         }
-//       );
-//   }
+  componentDidMount() {
+    fetch(`${endpoint}/user-notifications.json`, {
+      credentials: "include",
+      mode: "cors"
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Problem fetching notification data');
+        return res.json();
+      })
+      .then(
+        result => {
+          this.setState({
+            isLoaded: true,
+            notifications: result
+          });
+        },
+        // Error handling
+        error => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      );
+  }
 
   render() {
     const { error, isLoaded, notifications } = this.state;
-    // if (error) {
-    //   return <div>Error: {error.message}</div>;
-    // } else if (!isLoaded) {
-    //   return <div>Loading...</div>;
-    // } else {
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
       return (
         <div>
           <h2>My Notifications </h2>
@@ -55,11 +55,10 @@ export default class Notifications extends React.Component {
       );
     }
   }
-// }
+}
 
 
 // ORIGINAL UI TO DISPLAY NOTIFICATIONS
-
 // <div className="notification-container">
 // {notifications.map(n => (
 //   <div className="notification" key={n.id}>
