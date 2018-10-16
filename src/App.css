@@ -29,3 +29,15 @@
 .header {
   background-color: paleturquoise;
 }
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 5px;
+  border: 1px solid grey;
+  border-collapse: collapse;
+  border-spacing: 2px;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
