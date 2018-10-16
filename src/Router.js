@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import { endpoint } from './api';
 import Notifications from './Notifications'
+import ListItemComposition from './Sidebar'
 import Grid from '@material-ui/core/Grid';
 import Paper from "@material-ui/core/Paper";
 
@@ -29,21 +30,11 @@ const Account = () => (
   </div>
 )
 
-const BasicExample = () => (
+const Menu = () => (
   <Router>
     <Grid container spacing={24}>
-      <Grid item xs={2} className="sidebar"
-        style={{
-          padding: "5%",
-          width: "40%",
-          background: "#f0f0f0"
-        }}>
-        <ul style={{ listStyleType: "none", padding: 0 }}>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/account">Account</Link></li>
-          <li><Link to="/notifications">Notifications</Link></li>
-        </ul>
+      <Grid item xs={2} className="sidebar">
+        <ListItemComposition />
       </Grid>
 
       <Grid item xs={10} className="body">
@@ -57,20 +48,4 @@ const BasicExample = () => (
   </Router>
 );
 
-// const BasicExample = () => (
-//   <Router>
-//     <Grid item xs={12} className="router">
-//         <Link to="/">Home</Link> | 
-//         <Link to="/about">About</Link>  | 
-//         <Link to="/account">Account</Link> | 
-//         <Link to="/notifications">Notifications</Link>
-//       <hr/>
-
-//       <Route exact path="/" component={Home}/>
-//       <Route path="/about" component={About}/>
-//       <Route path="/account" component={Account}/>
-//       <Route path="/notifications" component={Notifications}/>
-//     </Grid>
-//   </Router>
-// )
-export default BasicExample
+export default Menu;
