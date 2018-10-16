@@ -48,25 +48,9 @@ export default class Notifications extends React.Component {
     } else {
       return (
         <div>
-          <h2>My Notifications </h2>
-
           <DataTable notifications={notifications}/>
         </div>
       );
     }
   }
 }
-
-
-// ORIGINAL UI TO DISPLAY NOTIFICATIONS
-// <div className="notification-container">
-// {notifications.map(n => (
-//   <div className="notification" key={n.id}>
-//   Repo: <a href={n.repository.html_url}>{n.repository.name}</a><br></br>
-//     {n.subject.type}: <a href={n.subject.url}>{n.subject.title}</a><br></br>
-//     Reason: {n.reason}<br></br>
-//     Update date: {n.updated_at.slice(0,10)}
-//     <hr></hr>
-//   </div>
-// ))}
-// </div>
