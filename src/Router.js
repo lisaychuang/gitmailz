@@ -32,9 +32,9 @@ const Account = () => (
 const BasicExample = () => (
   <Router>
     <Grid container spacing={24}>
-      <Grid item xs={3} className="router"
+      <Grid item xs={2} className="sidebar"
         style={{
-          padding: "10px",
+          padding: "5%",
           width: "40%",
           background: "#f0f0f0"
         }}>
@@ -46,7 +46,7 @@ const BasicExample = () => (
         </ul>
       </Grid>
 
-      <Grid item xs={9} className="body">
+      <Grid item xs={10} className="body">
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/account" component={Account} />
