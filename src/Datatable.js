@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import Datasort from "react-data-sort";
 import {notification} from "./Seed";
-
+import './App.css';
 // Initiate moment.js
 const moment = require('moment');
 
@@ -10,7 +10,6 @@ export default function MyTable(props) {
   return (
     <Datasort
       data={props.notifications}
-      defaultSortBy="id"
     //   paginate
       render={({
         data,
@@ -35,20 +34,6 @@ export default function MyTable(props) {
               />
               <TableBody data={data} />
             </table>
-
-            {/* Pagination footer begins  */}
-            <Flex style={{justifyContent: 'space-between'}}>
-              <GoToPage goToPage={goToPage} pages={pages} />
-              <PageIndicator pages={pages} activePage={activePage} />
-              <Navigation
-                activePage={activePage}
-                goToPage={goToPage}
-                nextPage={nextPage}
-                prevPage={prevPage}
-                pages={pages}
-              />
-              
-            </Flex>
           </div>
         );
       }}
@@ -59,11 +44,12 @@ export default function MyTable(props) {
 function TableHead({ setSortBy, sortBy, direction, toggleDirection }) {
   const columns = [
     { key: "score", title: "Score" },
-    { key: "id", title: "ID" },
-    { key: "repository.name", title: "Repo name" },
-    { key: "reason", title: "Reason" },
+    { key: "checkbox", title: ""},
+    { key: "star", title: "Star"},
     { key: "subject.title", title: "Description" },
-    { key: "updated_at", title: "Update Date" }
+    { key: "repository.name", title: "Repo" },
+    { key: "reason", title: "Reason" },
+    { key: "updated_at", title: "Update" }
   ];
   const items = columns.map(({ key, title }) => {
     const active = key === sortBy;
@@ -89,6 +75,8 @@ function TableHead({ setSortBy, sortBy, direction, toggleDirection }) {
   );
 }
 
+// Table header toggling function
+
 function HeadToggle({ children, active, onClick }) {
   return (
     <td
@@ -100,19 +88,37 @@ function HeadToggle({ children, active, onClick }) {
   );
 }
 
+function handleOnSubmit(event){
+  debugger;
+  event.preventDefault();
+  console.log(event.type)
+} 
+
 function TableBody({ data }) {
     return (
         <tbody>
             {data.map(({ score, id, reason, subject, updated_at, repository, notification_url }) => (
-                <tr>
+                <tr key={id}>
                     <td>{score}</td>
-                    <td>{id}</td>
-                    {/* Link to repo*/}
-                    <td><a href={repository.html_url} target="_ ">{repository.full_name}</a></td>
-                    <td>{reason}</td>
-
+                    <td>
+                      <form>
+                        <input type="checkbox" />
+                      </form>
+                    </td>
+                    <td>
+                    <form>
+                      <input type="submit" value="Bookmark Repo" onSubmit={handleOnSubmit}/>
+                    </form>
+                    </td>
+                             
                     {/* Link to notification */}
                     <td><a href={notification_url} target="_ "> {subject.title}</a></td>
+                    
+                    {/* Link to repo*/}
+                    <td><a href={repository.html_url} target="_ ">{repository.full_name}</a></td>
+                    
+                    <td>{reason}</td>
+
                     <td>{moment(updated_at).fromNow()}</td>
                 </tr>
             ))}
@@ -120,43 +126,43 @@ function TableBody({ data }) {
     );
 }
 
-function Flex({ children, style }) {
-  return <div style={{ display: "flex", ...style }}>{children}</div>;
-}
+// function Flex({ children, style }) {
+//   return <div style={{ display: "flex", ...style }}>{children}</div>;
+// }
 
-function GoToPage({ goToPage, pages}) {
-  const options = []
-  for(let i = 0; i < pages; i++) {
-    options.push(<option value={i}>{i + 1}</option>)
-  }
-  return <div>Go to page <select onChange={e => goToPage(parseInt(e.target.value))}>{options}</select></div>
-}
+// function GoToPage({ goToPage, pages}) {
+//   const options = []
+//   for(let i = 0; i < pages; i++) {
+//     options.push(<option value={i}>{i + 1}</option>)
+//   }
+//   return <div>Go to page <select onChange={e => goToPage(parseInt(e.target.value))}>{options}</select></div>
+// }
 
-function Navigation({ activePage, goToPage, nextPage, prevPage, pages }) {
-  return (
-    <Flex>
-      <button disabled={activePage === 0} onClick={() => goToPage(0)}>
-        {"<<"}
-      </button>
-      <button disabled={activePage === 0} onClick={prevPage}>
-        {"<"}
-      </button>
+// function Navigation({ activePage, goToPage, nextPage, prevPage, pages }) {
+//   return (
+//     <Flex>
+//       <button disabled={activePage === 0} onClick={() => goToPage(0)}>
+//         {"<<"}
+//       </button>
+//       <button disabled={activePage === 0} onClick={prevPage}>
+//         {"<"}
+//       </button>
 
-      <button disabled={activePage === pages - 1} onClick={nextPage}>
-        {">"}
-      </button>
-      <button
-        disabled={activePage === pages - 1}
-        onClick={() => goToPage(pages - 1)}
-      >
-        {">>"}
-      </button>
-    </Flex>
-  );
-}
+//       <button disabled={activePage === pages - 1} onClick={nextPage}>
+//         {">"}
+//       </button>
+//       <button
+//         disabled={activePage === pages - 1}
+//         onClick={() => goToPage(pages - 1)}
+//       >
+//         {">>"}
+//       </button>
+//     </Flex>
+//   );
+// }
 
-function PageIndicator ({pages, activePage}) {
-  return <div>
-    <b>{activePage + 1}</b> / {pages}
-  </div>
-} 
+// function PageIndicator ({pages, activePage}) {
+//   return <div>
+//     <b>{activePage + 1}</b> / {pages}
+//   </div>
+// } 
