@@ -10,7 +10,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import AccountIcon from "@material-ui/icons/AccountBox";
 import InboxIcon from "@material-ui/icons/Inbox";
 import InfoIcon from "@material-ui/icons/Info";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   menuItem: {
