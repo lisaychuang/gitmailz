@@ -1,19 +1,28 @@
 import React from 'react'
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 import { endpoint } from './api';
 import Notifications from './Notifications'
 import ListItemComposition from './Sidebar'
 import Grid from '@material-ui/core/Grid';
 import Paper from "@material-ui/core/Paper";
+import Button from '@material-ui/core/Button';
+import GithubIcon from "./GithubIcon";
+
 
 const Home = () => (
+    <Grid item xs={10} className="body">
+      <Paper>
+        <p>Gitmail is a Github notification dashboard that's intuitive, efficient, and useful. </p>
+        
 
-    <Grid item xs={6} className="body">
-      <Paper><a href={`${endpoint}/signin`}>Login</a></Paper>
+        <Button variant="contained" className="button" color="default" size="large">
+          <GithubIcon/> 
+          <a href={`${endpoint}/signin`}>Sign in with Github</a>
+        </Button>
+      </Paper>
     </Grid>
 )
 
