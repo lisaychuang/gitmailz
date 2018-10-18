@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
 import Router from './Router';
+import PrimarySearchAppBar from './AppBar';
+import Grid from '@material-ui/core/Grid';
+import Paper from "@material-ui/core/Paper";
 import './App.css';
 
 class App extends Component {
@@ -40,14 +43,18 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Gitmailz</h1>
-        </header>
-        <Router />
+      <div>
+        <Grid container spacing={24}>
+          <Grid item xs={12} className="header">
+            <PrimarySearchAppBar></PrimarySearchAppBar>
+          </Grid>
+
+          <Grid item xs={12} className="router">
+            <Router />
+          </Grid>
+        </Grid>
       </div>
-    );
+    )
   }
 }
 

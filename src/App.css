@@ -25,3 +25,36 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.header {
+  background-color: paleturquoise;
+}
+
+/* Notifications table styling */
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 5px;
+  border: 1px solid grey;
+  border-collapse: collapse;
+  border-spacing: 2px;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* Star repo styling */
+.star {
+    visibility:hidden;
+    font-size:30px;
+    cursor:pointer;
+}
+.star:before {
+   content: "\2605";
+   position: absolute;
+   visibility:visible;
+}
+.star:checked:before {
+   content: "\2606";
+   position: absolute;
+}
