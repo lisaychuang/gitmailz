@@ -9,12 +9,10 @@ const moment = require("moment");
 
 export default function MyTable(props) {
 
-  const handleOnSubmit= () => {
-    debugger;
-  }
-
   return (
     <Datasort
+      defaultSortBy="score"
+      defaultDirection="desc"
       data={props.notifications}
       //   paginate
       render={({
@@ -22,12 +20,12 @@ export default function MyTable(props) {
         setSortBy,
         sortBy,
         direction,
-        activePage,
-        toggleDirection,
-        goToPage,
-        nextPage,
-        prevPage,
-        pages
+        // activePage,
+        toggleDirection
+        // goToPage,
+        // nextPage,
+        // prevPage,
+        // pages
       }) => {
         return (
           <div style={{ maxWidth: "100%" }}>
