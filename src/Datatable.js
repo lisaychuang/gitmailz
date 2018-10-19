@@ -1,4 +1,6 @@
 import React from "react";
+import BlankStarIcon from "@material-ui/icons/StarBorder";
+import FilledStarIcon from "@material-ui/icons/Star";
 import Datasort from "react-data-sort";
 // import { notification } from "./Seed";
 import "./App.css";
@@ -6,6 +8,11 @@ import "./App.css";
 const moment = require("moment");
 
 export default function MyTable(props) {
+
+  const handleOnSubmit= () => {
+    debugger;
+  }
+
   return (
     <Datasort
       data={props.notifications}
@@ -87,14 +94,18 @@ function HeadToggle({ children, active, onClick }) {
   );
 }
 
+function bookmarkRepo(event){
+  debugger;
+  event.preventDefault();
+  
+}
+
 function TableBody({ data }) {
-  // handleOnSubmit = event => {
-  //   event.preventDefault();
-  // }
   return (
     <tbody>
       {data.map(
         ({
+          unread,
           score,
           id,
           reason,
@@ -103,18 +114,14 @@ function TableBody({ data }) {
           repository,
           notification_url
         }) => (
-          <tr key={id}>
+          <tr key={id} style={{ fontWeight: unread ? "bold" : "normal"}}>
             <td>{score}</td>
             <td>
                 <input type="checkbox" />
             </td>
             <td>
-              <form>
-                <input
-                  type="submit"
-                  value="Bookmark Repo"
-                />
-              </form>
+            {/* Should have Ternary Operator to toggle between star icons */}
+              <BlankStarIcon onClick={bookmarkRepo}/>
             </td>
 
             {/* Link to notification */}
