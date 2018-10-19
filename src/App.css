@@ -58,3 +58,9 @@ table, caption, tbody, tfoot, thead, tr, th, td {
    content: "\2606";
    position: absolute;
 }
+
+/* Unread notifications styling*/
+.unread-notifications {
+  font-weight: bold;
+  background-color: #e9ecef
+}

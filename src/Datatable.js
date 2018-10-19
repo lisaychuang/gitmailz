@@ -114,7 +114,7 @@ function TableBody({ data }) {
           repository,
           notification_url
         }) => (
-          <tr key={id} style={{ fontWeight: unread ? "bold" : "normal"}}>
+          <tr key={id} className={unread ? "unread-notifications" : ""}>
             <td>{score}</td>
             <td>
                 <input type="checkbox" />
