@@ -26,12 +26,6 @@ const Home = () => (
     </Grid>
 )
 
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-)
-
 const Account = () => (
   <div>
     <h2>Account information</h2>
@@ -48,7 +42,6 @@ const Menu = () => (
 
       <Grid item xs={10} className="body">
         <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
         <Route path="/account" component={Account} />
         <Route path="/notifications" component={Notifications} />
       </Grid>

@@ -31,6 +31,7 @@ function ListItemComposition(props) {
   return (
     <Paper>
       <MenuList>
+      {/* Menu option for Home */}
         <MenuItem className={classes.menuItem}>
           <ListItemIcon className={classes.icon}>
             <HomeIcon />
@@ -41,16 +42,8 @@ function ListItemComposition(props) {
             <Link to="/">Home</Link>
           </ListItemText>
         </MenuItem>
-        <MenuItem className={classes.menuItem}>
-          <ListItemIcon className={classes.icon}>
-            <InfoIcon />
-          </ListItemIcon>
-          <ListItemText
-            classes={{ primary: classes.primary }}
-            inset>
-            <Link to="/about">About</Link>
-          </ListItemText>
-        </MenuItem>
+
+        {/* Menu option for Account page */}
         <MenuItem className={classes.menuItem}>
           <ListItemIcon className={classes.icon}>
             <AccountIcon />
@@ -62,6 +55,7 @@ function ListItemComposition(props) {
           </ListItemText>
         </MenuItem>
         
+        {/* Menu option for Notifications */}
         <MenuItem className={classes.menuItem}>
         <ListItemIcon className={classes.icon}>
           <InboxIcon />
