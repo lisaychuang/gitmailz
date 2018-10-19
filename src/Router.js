@@ -11,7 +11,6 @@ import Paper from "@material-ui/core/Paper";
 import Button from '@material-ui/core/Button';
 import GithubIcon from "./GithubIcon";
 
-
 const Home = () => (
     <Grid item xs={10} className="body">
       <Paper>
@@ -26,9 +25,67 @@ const Home = () => (
     </Grid>
 )
 
+/**
+ * 
+ * @param {KeyboardEvent} evt 
+ */
+function preferencesSave(evt) {
+  /** @type {HTMLFormElement} */
+
+  evt.preventDefault();
+  const formElement = evt.target;
+  const elements = [...formElement.elements];
+  const [repoTextArea] = elements.filter(elem => elem.name === 'favRepos');
+  const favRepos = repoTextArea.value;
+  
+  fetch(`${endpoint}/find-repos.json`, {
+    credentials: "include",
+    mode: "cors",
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(favRepos)
+  })
+    .then(res => {
+      if (!res.ok) throw new Error('Problem fetching notification data');
+      return res.json();
+    })
+    // .then(
+    //   result => {
+    //     this.setState({
+    //       isLoaded: true,
+    //       notifications: result
+    //     });
+    //   },
+    //   // Error handling
+    //   error => {
+    //     this.setState({
+    //       isLoaded: true,
+    //       error
+    //     });
+    //   }
+    // );
+
+}
+
 const Account = () => (
   <div>
     <h2>Account information</h2>
+
+    <form onSubmit={preferencesSave}>
+      <label>
+        List repos you'll like to set as favorite repos (:owner/:repo), separated by commas:<br></br>
+      </label>
+    <textarea name="favRepos" rows="6" cols="50">
+      emberjs/ember.js, 
+      jquery/jquery,
+      DefinitelyTyped/DefinitelyTyped
+    </textarea>
+      <input type="submit" value="Submit" />
+    </form>
+
     <p>You have signed in successfully</p>
   </div>
 )
