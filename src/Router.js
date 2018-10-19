@@ -4,7 +4,7 @@ import {
   Route
 } from 'react-router-dom'
 import { endpoint } from './api';
-import Notifications from './Notifications'
+import Notifications from './NotificationsContainer'
 import ListItemComposition from './Sidebar'
 import Grid from '@material-ui/core/Grid';
 import Paper from "@material-ui/core/Paper";
