@@ -1,9 +1,13 @@
 import React from "react";
+import Datasort from "react-data-sort";
+import "../App.css";
+
+// @material-ui components
+import Chip from '@material-ui/core/Chip';
 import BlankStarIcon from "@material-ui/icons/StarBorder";
 // import FilledStarIcon from "@material-ui/icons/Star";
-import Datasort from "react-data-sort";
-// import { notification } from "./Seed";
-import "../App.css";
+
+
 // Initiate moment.js
 const moment = require("moment");
 
@@ -11,21 +15,17 @@ export default function MyTable(props) {
 
   return (
     <Datasort
+      // higher score = more important notifications
       defaultSortBy="score"
       defaultDirection="desc"
       data={props.notifications}
-      //   paginate
+
       render={({
         data,
         setSortBy,
         sortBy,
         direction,
-        // activePage,
         toggleDirection
-        // goToPage,
-        // nextPage,
-        // prevPage,
-        // pages
       }) => {
         return (
           <div style={{ maxWidth: "100%" }}>
@@ -93,9 +93,48 @@ function HeadToggle({ children, active, onClick }) {
 }
 
 function bookmarkRepo(event){
-  debugger;
   event.preventDefault();
   
+}
+
+// Background color for notification reason labels
+// https://flatuicolors.com/palette/se
+
+function reasonChipColor(reason){
+  let style = {}
+  switch (reason) {
+    case "invitation":
+      style = { backgroundColor: "#4bcffa" } //MEGAMAN color
+      break;
+    case "mention":
+      style = { backgroundColor: "#ffdd59" }  //YRIEL YELLOW
+      break;
+    case "assign":
+      style = { backgroundColor: "#ff5e57" }  //SUNSET ORANGE
+      break;
+    case "team_mention":
+      style = { backgroundColor: "#0be881" }  //MINTY GREEN
+      break;
+    case "manual":
+      style = { backgroundColor: "#575fcf" }  //DARK PERIWINKLE
+      break;
+    case "author":
+      style = { backgroundColor: "#808e9b" }  //LONDON SQUARE
+      break;
+    case "state_change":
+      style = { backgroundColor: "#485460" }  //GOODNIGHT
+      break;
+    case "comment":
+      style = { backgroundColor: "#05c46b" }  //GREEN TEAL
+      break;
+    case "subscribed":
+      style = { backgroundColor: "#485460", color: "#ffffff" }  //GOODNIGHT
+      break;
+    default:
+      style = { backgroundColor: "#d2dae2" }  //GREY
+  }
+  debugger;
+  return style;
 }
 
 function TableBody({ data }) {
@@ -137,7 +176,14 @@ function TableBody({ data }) {
               </a>
             </td>
 
-            <td>{reason}</td>
+            {/* Colorful notification reason label*/}
+            <td>
+            <Chip
+              label={reason}
+              style={reasonChipColor(reason)}
+              className="notification-reason"
+            />
+            </td>
 
             <td>{moment(updated_at).fromNow()}</td>
           </tr>
