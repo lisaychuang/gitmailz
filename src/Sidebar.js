@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+
+// material-ui components
 import MenuList from "@material-ui/core/MenuList";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
@@ -9,8 +12,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import AccountIcon from "@material-ui/icons/AccountBox";
 import InboxIcon from "@material-ui/icons/Inbox";
-import InfoIcon from "@material-ui/icons/Info";
-import { Link } from "react-router-dom";
 
 const styles = theme => ({
   menuItem: {
@@ -25,7 +26,7 @@ const styles = theme => ({
   icon: {}
 });
 
-function ListItemComposition(props) {
+function Sidebar(props) {
   const { classes } = props;
 
   return (
@@ -72,8 +73,8 @@ function ListItemComposition(props) {
   );
 }
 
-ListItemComposition.propTypes = {
+Sidebar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ListItemComposition);
+export default withStyles(styles)(Sidebar);
