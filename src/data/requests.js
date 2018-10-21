@@ -1,4 +1,4 @@
-import { endpoint } from "../api";
+import { endpoint } from "./api";
 
 function apiCall(requestPath, method = 'GET', body) {
     return fetch(`${endpoint}/${requestPath}.json`, {

@@ -1,5 +1,5 @@
 import React from "react";
-import { endpoint } from "./api";
+import { endpoint } from "./data/api";
 import DataTable from './Datatable'
 
 export default class Notifications extends React.Component {

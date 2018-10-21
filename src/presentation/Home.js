@@ -1,5 +1,5 @@
 import React from 'react'
-import { endpoint } from "../api";
+import { endpoint } from "../data/api";
 
 // material-ui components
 import Grid from '@material-ui/core/Grid';
