@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RouterLayout from './RouterLayout';
+import RouterContainer from './container/RouterContainer';
 import PrimarySearchAppBar from './AppBar';
 import Grid from '@material-ui/core/Grid';
 import './App.css';
@@ -15,7 +15,7 @@ class App extends Component {
           </Grid>
 
           <Grid item xs={12} className="router">
-            <RouterLayout />
+            <RouterContainer />
           </Grid>
         </Grid>
       </div>
