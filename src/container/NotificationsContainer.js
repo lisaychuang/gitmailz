@@ -1,6 +1,7 @@
 import React from "react";
-import { endpoint } from "./data/api";
-import DataTable from './Datatable'
+
+import { getNotifications } from "../data/requests";
+import DataTable from '../Datatable'
 
 export default class Notifications extends React.Component {
   constructor(props) {
@@ -13,27 +14,21 @@ export default class Notifications extends React.Component {
   }
 
   componentDidMount() {
-    // fetch list of notifications from Rails API
-    fetch(`${endpoint}/user-notifications.json`, {
-      credentials: "include",
-      mode: "cors"
-    })
-      // transform result into JSON object
-      .then(res => {
-        if (!res.ok) throw new Error('Problem fetching notification data');
-        return res.json();
-      })
-
-      // setState with result object
+    // fetch list of user's notifications from Rails API
+    getNotifications()
       .then(
+        // setState with result object
         result => {
           this.setState({
             isLoaded: true,
             notifications: result
           });
-        },
-        // Handle error
+        })
+
+      // Catch error if the API response never came, e.g. if user is offline or request timed out
+      .catch(
         error => {
+          window.alert("Current user request never came back");
           this.setState({
             isLoaded: true,
             error

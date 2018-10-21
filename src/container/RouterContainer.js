@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Sidebar from "../Sidebar";
 import Home from "../presentation/Home";
 import Account from "../presentation/Account";
-import Notifications from "../NotificationsContainer";
+import Notifications from "./NotificationsContainer";
 
 export default class RouterLayout extends Component {
   constructor(props) {
