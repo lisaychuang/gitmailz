@@ -3,7 +3,7 @@ import React from "react";
 import { saveFavRepos } from "../data/requests";
 
 const DEFAULT_FAV_REPOS =
-  "emberjs/ember.js, jquery/jquery, DefinitelyTyped/DefinitelyTyped";
+  "example: facebook/react, emberjs/ember.js, jquery/jquery, DefinitelyTyped/DefinitelyTyped";
 
 /**
  * Upon form submit, save new user input
@@ -26,22 +26,22 @@ const AccountPage = ({userFavRepos, onInputChange}) => (
     <h2>Account information</h2>
 
     <form onSubmit={preferencesSave}>
-      <label>
+      <h4>
         List repos you'll like to set as favorite repos (:owner/:repo),
         separated by commas:
-        <br />
-      </label>
+      </h4>
+      <br />
+
       <textarea
         name="favRepos"
         rows="6"
         cols="50"
         onChange={onInputChange}
         value={userFavRepos || DEFAULT_FAV_REPOS}
-      />
-      <input type="submit" value="Submit" />
-    </form>
+      /><br />
 
-    <p>You have signed in successfully</p>
+      <input type="submit" value="Save Favorite Repos" />
+    </form>
   </div>
 );
 
