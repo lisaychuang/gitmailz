@@ -26,5 +26,9 @@ export function getUserInfo(){
 };
   
 export function saveFavRepos(favRepos){
-    return apiCall('find-repos', 'POST',  JSON.stringify(favRepos));
-   };
+  return apiCall('find-repos', 'POST',  JSON.stringify(favRepos));
+};
+
+export function getNotifications(){
+  return apiCall('user-notifications');
+};
