@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RouterContainer from './container/RouterContainer';
-import PrimarySearchAppBar from './AppBar';
+import PrimarySearchAppBar from './presentation/AppBar';
 import Grid from '@material-ui/core/Grid';
 import './App.css';
 

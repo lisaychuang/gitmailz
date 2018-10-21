@@ -1,9 +1,9 @@
 import React from "react";
 import BlankStarIcon from "@material-ui/icons/StarBorder";
-import FilledStarIcon from "@material-ui/icons/Star";
+// import FilledStarIcon from "@material-ui/icons/Star";
 import Datasort from "react-data-sort";
 // import { notification } from "./Seed";
-import "./App.css";
+import "../App.css";
 // Initiate moment.js
 const moment = require("moment");
 

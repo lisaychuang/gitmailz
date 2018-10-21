@@ -1,7 +1,7 @@
 import React from "react";
 
 import { getNotifications } from "../data/requests";
-import DataTable from '../Datatable'
+import DataTable from '../presentation/Datatable'
 
 export default class Notifications extends React.Component {
   constructor(props) {

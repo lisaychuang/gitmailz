@@ -6,7 +6,7 @@ import { getUserFavRepos, getUserInfo } from "../data/requests";
 import Grid from "@material-ui/core/Grid";
 
 // Child components
-import Sidebar from "../Sidebar";
+import Sidebar from "../presentation/Sidebar";
 import Home from "../presentation/Home";
 import Account from "../presentation/Account";
 import Notifications from "./NotificationsContainer";
