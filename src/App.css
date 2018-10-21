@@ -26,10 +26,6 @@
   to { transform: rotate(360deg); }
 }
 
-.header {
-  background-color: paleturquoise;
-}
-
 /* Notifications table styles */
 table, caption, tbody, tfoot, thead, tr, th, td {
   margin: 0;

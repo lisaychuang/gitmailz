@@ -16,7 +16,7 @@ import InboxIcon from "@material-ui/icons/Inbox";
 const styles = theme => ({
   menuItem: {
     "&:focus": {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: "#4bcffa",
       "& $primary, & $icon": {
         color: theme.palette.common.white
       }
