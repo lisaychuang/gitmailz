@@ -1,44 +1,20 @@
 import React from "react";
 
-import { getNotifications } from "../data/requests";
+import { connect } from "react-redux";
+import * as actions from "../actions/dataActions";
 import DataTable from '../presentation/Datatable'
 
-export default class Notifications extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      notifications: []
-    };
-  }
+class Notifications extends React.Component {
 
   componentDidMount() {
+    // invoke action function
+    // dispatch "LOAD_NOTIFICATIONS" action to kick off async web request
     // fetch list of user's notifications from Rails API
-    getNotifications()
-      .then(
-        // setState with result object
-        result => {
-          this.setState({
-            isLoaded: true,
-            notifications: result
-          });
-        })
-
-      // Catch error if the API response never came, e.g. if user is offline or request timed out
-      .catch(
-        error => {
-          window.alert("Current user request never came back");
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
+    this.props.loadNotifications();
   }
 
   render() {
-    const { error, isLoaded, notifications } = this.state;
+    const { error, isLoaded, notifications } = this.props;
     // render error message
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -57,3 +33,11 @@ export default class Notifications extends React.Component {
     }
   }
 }
+
+// connect NotificationContainer to store 
+// receive state and actions as props
+
+export default connect(
+  state => state.gitmail,
+  actions
+)(Notifications);
