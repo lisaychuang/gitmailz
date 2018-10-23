@@ -2,13 +2,13 @@ import React from "react";
 
 import { connect } from "react-redux";
 import * as actions from "../actions/dataActions";
-import DataTable from '../presentation/Datatable'
+import DataTable from '../presentation/Datatable';
 
 class Notifications extends React.Component {
 
   componentDidMount() {
     // invoke action function
-    // dispatch "LOAD_NOTIFICATIONS" action to kick off async web request
+    // dispatch "LOAD_DATA" action to kick off async web request
     // fetch list of user's notifications from Rails API
     this.props.loadNotifications();
   }
