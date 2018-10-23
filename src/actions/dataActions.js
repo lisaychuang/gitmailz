@@ -10,6 +10,7 @@ export function loadNotifications() {
       type: "LOAD_NOTIFICATIONS"
     });
 
+    // fetch list of user's notifications from Rails API
     getNotifications()
     .then(data => {
       dispatch({
@@ -17,6 +18,7 @@ export function loadNotifications() {
         payload: data
       });
     })
+    // Catch error if the API response never came, e.g. if user is offline or request timed out
     .catch(
       error => {
         window.alert("Current user request never came back");
